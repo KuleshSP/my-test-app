@@ -1,24 +1,35 @@
 import React, {useEffect} from 'react';
-import {connect, ConnectedProps} from 'react-redux';
-
+import {connect, type ConnectedProps} from 'react-redux';
 import type {RootState} from '_main/services/types';
-
+import {UIPaper} from 'components';
 import {actions as homePageActions} from '../services/actions';
-import {getTableAsyncState} from '../services/selectors';
+import {getHomePageState, getTableAsyncState} from '../services/selectors';
+import HomePageTable from './table';
 
 const connector = connect((state: RootState) => {
-  const {loaded, pending} = getTableAsyncState(state);
+  const {table} = getHomePageState(state);
+  const {pending} = getTableAsyncState(state);
 
   return {
-    loaded,
+    table,
+
     pending,
   };
 }, homePageActions);
 
 type ReduxProps = ConnectedProps<typeof connector>;
 
-const HomeTemplate = (props: ReduxProps): JSX.Element => {
-  const {mountPage, unmountPage} = props;
+const HomePage = (props: ReduxProps): JSX.Element => {
+  const {
+    table: {items},
+
+    pending,
+
+    mountPage,
+    unmountPage,
+    cancelDocumentsRequested,
+    documentsRequested,
+  } = props;
 
   useEffect(() => {
     mountPage();
@@ -28,7 +39,16 @@ const HomeTemplate = (props: ReduxProps): JSX.Element => {
     };
   }, []);
 
-  return <div></div>;
+  return (
+    <UIPaper>
+      <HomePageTable
+        disabled={pending}
+        onCancel={cancelDocumentsRequested}
+        requestData={documentsRequested}
+        rows={items}
+      />
+    </UIPaper>
+  );
 };
 
-export default connector(HomeTemplate);
+export default connector(HomePage);

@@ -15,7 +15,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 100vw;
-  /* overflow-y: scroll; */
   overflow-x: hidden;
   color: black;
   background-color: white;
@@ -56,22 +55,4 @@ dl {
   margin: 0;
   padding: 0;
   list-style: none;
-}
-
-.slick-arrow:before {
-  color: green;
-}
-
-.slick-prev,
-.slick-next {
-  top: 73px;
-}
-
-#nprogress .bar {
-  height: 4px;
-  background-color: #00bdff !important;
-}
-
-#nprogress .spinner-icon {
-  display: none;
 }

@@ -1,5 +1,5 @@
 import React, {Suspense, useEffect} from 'react';
-import {connect, ConnectedProps} from 'react-redux';
+import {connect, type ConnectedProps} from 'react-redux';
 import HomePage from 'pages/_home/components';
 import IndexLayout from 'layout';
 import {actions as appActions} from '../services/actions';

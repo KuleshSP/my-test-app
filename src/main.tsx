@@ -1,3 +1,4 @@
+import 'api-mocks';
 import './index.css';
 
 import React from 'react';

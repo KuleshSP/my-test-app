@@ -1,9 +1,8 @@
 import type {RootState} from '_main/services/types';
-import type {AsyncStateTypes} from 'services/async-state-reducer/types';
+import type {HomePageMainState, HomePageTableAsyncState} from './types';
 
-import type {HomePageState} from './types';
+export const getHomePageState = (state: RootState): HomePageMainState =>
+  state.homePage_state.mainState;
 
-export const getHomePageState = (state: RootState): HomePageState => state.homePage_state.mainState;
-
-export const getTableAsyncState = (state: RootState): AsyncStateTypes =>
+export const getTableAsyncState = (state: RootState): HomePageTableAsyncState =>
   state.homePage_state.tableAsyncState;

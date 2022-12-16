@@ -5,7 +5,6 @@ import axios, {
   CancelTokenSource,
   CancelToken,
 } from 'axios';
-import {loadProgressBar} from 'x-axios-progress-bar';
 
 const BASE_URL = import.meta.env.BASE_URL;
 
@@ -23,8 +22,6 @@ export const instance: AxiosInstance = axios.create({
       (error: AxiosError) => Promise.reject(error?.response?.data || error.toString()),
   );
 })();
-
-loadProgressBar(undefined, instance);
 
 const AxiosCancelToken = axios.CancelToken;
 

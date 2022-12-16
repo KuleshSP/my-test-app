@@ -9,7 +9,6 @@ const StyledLayoutMain = styled.main`
   width: 80%;
   max-width: ${({theme}) => theme.breakpoints.values.xl}px;
   min-width: ${({theme}) => theme.breakpoints.values.sm}px;
-  background-color: rgba(248, 248, 248, 1);
 `;
 
 interface LayoutMainProps extends React.PropsWithChildren {

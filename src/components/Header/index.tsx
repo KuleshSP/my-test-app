@@ -6,10 +6,7 @@ const Header = (props: React.PropsWithChildren): JSX.Element => {
 
   return (
     <HeaderBox>
-      <ContentBox>
-        Header
-        {children}
-      </ContentBox>
+      <ContentBox>{children}</ContentBox>
     </HeaderBox>
   );
 };

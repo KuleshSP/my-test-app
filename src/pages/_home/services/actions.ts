@@ -1,11 +1,16 @@
-import type {ActionPayload} from './types';
+import type {CancelDocumentsRequestedPayload, DocumentsSucceedPayload} from './types';
 
 export const actionTypes = {
   MOUNT_PAGE: 'HOME_PAGE/MOUNT_PAGE' as const,
   UNMOUNT_PAGE: 'HOME_PAGE/UNMOUNT_PAGE' as const,
-  ASYNC_ACTION_REQUESTED: 'ASYNC_ACTION_REQUESTED' as const,
-  ASYNC_ACTION_SUCCEED: 'ASYNC_ACTION_SUCCEED' as const,
-  ASYNC_ACTION_FAILED: 'ASYNC_ACTION_FAILED' as const,
+
+  DOCUMENTS_REQUESTED: 'HOME_PAGE/DOCUMENTS_REQUESTED' as const,
+  DOCUMENTS_SUCCEED: 'HOME_PAGE/DOCUMENTS_SUCCEED' as const,
+  DOCUMENTS_FAILED: 'HOME_PAGE/DOCUMENTS_FAILED' as const,
+
+  CANCEL_DOCUMENTS_REQUESTED: 'HOME_PAGE/CANCEL_DOCUMENTS_REQUESTED' as const,
+  CANCEL_DOCUMENTS_SUCCEED: 'HOME_PAGE/CANCEL_DOCUMENTS_SUCCEED' as const,
+  CANCEL_DOCUMENTS_FAILED: 'HOME_PAGE/CANCEL_DOCUMENTS_FAILED' as const,
 };
 
 export const actions = {
@@ -15,16 +20,29 @@ export const actions = {
   unmountPage: () => ({
     type: actionTypes.UNMOUNT_PAGE,
   }),
-  asyncActionRequested: (payload: ActionPayload) => ({
-    type: actionTypes.ASYNC_ACTION_REQUESTED,
+
+  documentsRequested: () => ({
+    type: actionTypes.DOCUMENTS_REQUESTED,
+  }),
+  documentsSucceed: (payload: DocumentsSucceedPayload) => ({
+    type: actionTypes.DOCUMENTS_SUCCEED,
     payload,
   }),
-  asyncActionSucceed: (payload: ActionPayload) => ({
-    type: actionTypes.ASYNC_ACTION_SUCCEED,
+  documentsFailed: (error: Error | string) => ({
+    type: actionTypes.DOCUMENTS_FAILED,
+    error,
+  }),
+
+  cancelDocumentsRequested: (payload: CancelDocumentsRequestedPayload) => ({
+    type: actionTypes.CANCEL_DOCUMENTS_REQUESTED,
     payload,
   }),
-  asyncActionFailed: (error: Error | string) => ({
-    type: actionTypes.ASYNC_ACTION_FAILED,
+  cancelDocumentsSucceed: (payload: CancelDocumentsRequestedPayload) => ({
+    type: actionTypes.CANCEL_DOCUMENTS_SUCCEED,
+    payload,
+  }),
+  cancelDocumentsFailed: (error: Error | string) => ({
+    type: actionTypes.CANCEL_DOCUMENTS_FAILED,
     error,
   }),
 };
